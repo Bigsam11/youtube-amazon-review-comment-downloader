@@ -14,7 +14,7 @@ export class AmazonserviceService{
   ) { }
   
   //apiURL = 'https://api-amazon-reviews.herokuapp.com/webscrape';
-  apiURL = 'http://localhost:2000/webscrape';
+  apiURL = 'https://amazonreviewapi.azurewebsites.net/webscrape';
   payload:any;
 
   httpOptions = {
