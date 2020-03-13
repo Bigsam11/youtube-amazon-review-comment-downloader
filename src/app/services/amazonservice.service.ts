@@ -13,8 +13,8 @@ export class AmazonserviceService{
     
   ) { }
   
-  //apiURL = 'https://api-amazon-reviews.herokuapp.com/webscrape';
-  apiURL = 'http://localhost:2000/webscrape';
+  apiURL = 'https://amazonreviewapi.azurewebsites.net/webscrape';
+  //apiURL = 'http://localhost:2000/webscrape';
   payload:any;
 
   httpOptions = {
@@ -24,12 +24,6 @@ export class AmazonserviceService{
     })
   }
 
-
-
-
-    
-
-  
 
 
   getComments(query: string): Observable<any> {

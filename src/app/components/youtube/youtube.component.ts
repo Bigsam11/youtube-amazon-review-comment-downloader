@@ -21,6 +21,7 @@ export class YoutubeComponent implements OnInit {
   currentDate = new Date();
   loading:boolean=false;
   results:SearchResult[];
+  youtubeUrl:string;
   page = 1;
   pageSize = 6;
   fullUrl:string;
@@ -38,10 +39,10 @@ export class YoutubeComponent implements OnInit {
   }
 
 
-   getUrl(youtubeUrl){
+   getUrl(){
      this.processing = true;
      this.processed = false;
-     this.fullUrl = youtubeUrl;
+     this.fullUrl = this.youtubeUrl;
      console.log('the value before any string::::::',this.fullUrl)
      if(this.fullUrl == undefined){
        this.processing = false;
@@ -49,7 +50,7 @@ export class YoutubeComponent implements OnInit {
        this.emptyInput = true;
      }
      else{  
-     console.log('this is the youtubeURl:::::', youtubeUrl)
+     console.log('this is the youtubeURl:::::',this.youtubeUrl)
      console.log('this is the fullUrl:::::', this.fullUrl)
      const videoId = this.formatUrl();
      console.log('this is the Vid id before processing::::',videoId);

@@ -41,7 +41,7 @@ export class AmazonComponent implements OnInit {
       this.emptyInput = true;
     }
     else{  
-    console.log('this is the youtubeURl:::::', amazonUrl)
+    console.log('this is the amazonUrl:::::', amazonUrl)
     console.log('this is the fullUrl:::::', this.amazonUrl)
     this.amazon.getComments(this.amazonUrl) 
     .subscribe(
