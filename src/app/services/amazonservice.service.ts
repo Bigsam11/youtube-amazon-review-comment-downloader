@@ -13,8 +13,10 @@ export class AmazonserviceService{
     
   ) { }
   
+
+  
+
   apiURL = 'https://amazonreviewapi.azurewebsites.net/webscrape';
-  //apiURL = 'http://localhost:2000/webscrape';
   payload:any;
 
   httpOptions = {
