@@ -13,7 +13,7 @@ export class AmazonserviceService{
     
   ) { }
   
-  //apiURL = 'https://api-amazon-reviews.herokuapp.com/webscrape';
+  
   apiURL = 'https://amazonreviewapi.azurewebsites.net/webscrape';
   payload:any;
 
