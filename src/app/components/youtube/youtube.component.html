@@ -1,0 +1,80 @@
+
+
+
+
+
+    <div class="jumbotron">
+        <h1 class="display-4">Youtube's Comment Downloader!</h1>
+        <p class="lead">A simple application for Downloading Youtube's Comments</p>
+        <hr class="my-4">
+        
+        <div *ngIf='wrongUrl'  class="alert alert-danger" role="alert">
+          The wrong link was entered,Please enter a valid youtube video link..
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div  *ngIf='emptyInput' class="alert alert-secondary" role="alert">
+         Please enter a valid youtube  video link...
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class='pb-3'>
+          <input style='width:200px; height:45px;' type="text" class='form-control' placeholder="Enter Url..." [(ngModel)]="youtubeUrl">
+          </div>
+          <div class='pt-2' >
+        <div *ngIf='processed'>
+           <button style='width:200px;' type="button" class=" btn btn-secondary btn-lg" (click)="getUrl(youtubeUrl)">Submit</button>
+        </div>
+        <div *ngIf='processing'>
+           <button style='width:200px;' type="button" class=" btn btn-secondary btn-lg"><span class="spinner-border spinner-border-sm">Processing...</span>
+            
+          </button>
+        </div>
+          
+           
+          </div>
+          <div class="spinner-border"></div>
+         
+          
+      </div>
+      
+       
+      
+     <div  class=' table-bordered table-responsive-sm'>
+      <table #dataTable class="table display">
+        <thead>
+          <tr>
+            <th scope="col">Num</th>
+            <th scope="col">UserName</th>
+            <th scope="col">Date</th>
+            <th scope="col">rating </th>
+            <th scope="col">Comment </th>
+            <th scope="col">Link </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let result of results | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ;let i = index'>
+            <th scope="row">{{i}}</th>
+            <td>{{result.authorDisplayName}}</td>
+            <td>{{result.publishedAt}}</td>
+            <td>{{result.viewerRating}}</td>
+            <td>{{result.textDisplay}}</td>
+            <td>{{result.authorChannelUrl}} </td>
+          </tr>
+         
+          <div class='pt-2' *ngIf='download' >
+            <button style='width:200px;' type="button" class=" btn btn-secondary btn-lg" (click)="getCsvFile()">Download as csv</button>
+            
+           </div>
+        </tbody>
+      </table>
+
+      <ngb-pagination [collectionSize]="results.length" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+      
+    </div>
+           
+    
+  
+  

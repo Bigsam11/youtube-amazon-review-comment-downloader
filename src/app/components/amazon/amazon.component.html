@@ -1,0 +1,78 @@
+
+
+
+
+
+    <div class="jumbotron">
+        <h1 class="display-4">Amazon review Downloader!</h1>
+        <p class="lead">A simple application for Downloading Amazon reviews</p>
+        <hr class="my-4">
+        
+        <div *ngIf='wrongUrl'  class="alert alert-danger" role="alert">
+          The wrong link was entered,Please enter a valid youtube video link..
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div  *ngIf='emptyInput' class="alert alert-secondary" role="alert">
+         Please enter a valid youtube  video link...
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class='pb-3'>
+          <input style='width:200px; height:45px;' type="text" class='form-control' placeholder="Enter Url..." [(ngModel)]="amazonUrl">
+          </div>
+          <div class='pt-2' >
+        <div *ngIf='processed'>
+           <button style='width:200px;' type="button" class=" btn btn-secondary btn-lg" (click)="getUrl(amazonUrl)">Submit</button>
+        </div>
+        <div *ngIf='processing'>
+           <button style='width:200px;' type="button" class=" btn btn-secondary btn-lg"><span class="spinner-border spinner-border-sm">Processing request..</span>
+            
+          </button>
+        </div>
+          
+           
+          </div>
+          <div class="spinner-border"></div>
+         
+          
+      </div>
+      
+       
+      
+     <div  class=' table-bordered table-responsive-sm'>
+      <table #dataTable class="table display">
+        <thead>
+          <tr>
+            <th scope="col">Num</th>
+            <th scope="col">name</th>
+            <th scope="col">Date</th>
+            <th scope="col">reviews </th>
+            <th scope="col">rating </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let result of results | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ;let i = index'>
+            <th scope="row">{{i}}</th>
+            <td>{{result.name}}</td>
+            <td>{{result.publishedAt}}</td>
+            <td>{{result.reviews}}</td>
+            <td>{{result.rating}}</td>
+          </tr>
+         
+          <div class='pt-2' *ngIf='download' >
+            <button style='width:200px;' type="button" class=" btn btn-secondary btn-lg" (click)="getCsvFile()">Download as csv</button>
+            
+           </div>
+        </tbody>
+      </table>
+
+      <ngb-pagination [collectionSize]="results.length" [(page)]="page" [maxSize]="10" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+      
+    </div>
+           
+    
+  
+  
