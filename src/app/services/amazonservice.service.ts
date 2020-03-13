@@ -13,20 +13,12 @@ export class AmazonserviceService{
     
   ) { }
   
-<<<<<<< HEAD
-
-  
-
-=======
-  
->>>>>>> a5d3b81d61d9a834ca951e8ca6eb6f2e6e9bd471
   apiURL = 'https://amazonreviewapi.azurewebsites.net/webscrape';
   payload:any;
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      
     })
   }
 
